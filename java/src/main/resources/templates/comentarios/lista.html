@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      th:replace="~{layout :: layout(~{::title}, ~{::content})}">
+
+<head>
+    <title>Todos los Comentarios</title>
+</head>
+
+<body>
+<div th:fragment="content">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2><i class="bi bi-chat-square-text"></i> Gestión de Comentarios</h2>
+        </div>
+
+        <div th:if="${comentarios.isEmpty()}" class="alert alert-info">
+            <i class="bi bi-info-circle"></i> No hay comentarios registrados.
+        </div>
+        
+        <div class="row" th:unless="${comentarios.isEmpty()}">
+            <div class="col-12" th:each="comentario : ${comentarios}">
+                <div class="card mb-3">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h5 class="card-title">
+                                    <i class="bi bi-box-seam"></i> 
+                                    <a th:href="@{/comentarios/producto/{id}(id=${comentario.producto.idProducto})}" 
+                                       th:text="${comentario.producto.nombre}"></a>
+                                </h5>
+                                
+                                <div class="mb-2">
+                                    <strong><i class="bi bi-person-circle"></i> <span th:text="${comentario.usuario.nombreUsuario}"></span></strong>
+                                    <span class="badge bg-primary ms-2" th:text="${comentario.usuario.rol}"></span>
+                                    
+                                    <span class="ms-3 text-warning">
+                                        <i class="bi bi-star-fill" th:each="i : ${#numbers.sequence(1, comentario.calificacion)}"></i>
+                                        <i class="bi bi-star" th:if="${comentario.calificacion < 5}" th:each="i : ${#numbers.sequence(comentario.calificacion + 1, 5)}"></i>
+                                    </span>
+                                </div>
+                                
+                                <p class="mb-2" th:text="${comentario.contenido}"></p>
+                                
+                                <small class="text-muted">
+                                    <i class="bi bi-clock"></i> 
+                                    <span th:text="${#temporals.format(comentario.fechaCreacion, 'dd/MM/yyyy HH:mm')}"></span>
+                                </small>
+                            </div>
+                            
+                            <div class="col-md-4 text-end">
+                                <a th:href="@{/comentarios/eliminar/{id}(id=${comentario.idComentario})}"
+                                   class="btn btn-danger"
+                                   onclick="return confirm('¿Eliminar este comentario?')">
+                                    <i class="bi bi-trash"></i> Eliminar
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

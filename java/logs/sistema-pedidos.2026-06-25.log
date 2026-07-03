@@ -1,0 +1,670 @@
+2026-06-25 18:52:32.867 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.1.Final
+2026-06-25 18:52:32.975 [restartedMain] INFO  c.s.p.SistemaGestionPedidosApplication - Starting SistemaGestionPedidosApplication using Java 21.0.2 with PID 9432 (C:\Users\ANGELO\Documents\proyecto bd\proyecto bd\java\target\classes started by ANGELO in C:\Users\ANGELO\Documents\proyecto bd\proyecto bd\java)
+2026-06-25 18:52:32.975 [restartedMain] DEBUG c.s.p.SistemaGestionPedidosApplication - Running with Spring Boot v3.2.0, Spring v6.1.1
+2026-06-25 18:52:32.975 [restartedMain] INFO  c.s.p.SistemaGestionPedidosApplication - No active profile set, falling back to 1 default profile: "default"
+2026-06-25 18:52:33.108 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-06-25 18:52:33.108 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-06-25 18:52:34.568 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-06-25 18:52:34.568 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-06-25 18:52:34.645 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.sistema.pedidos.repository.ClienteInfoRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2026-06-25 18:52:34.685 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.sistema.pedidos.repository.HistorialNavegacionRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2026-06-25 18:52:34.715 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data JPA - Could not safely identify store assignment for repository candidate interface com.sistema.pedidos.repository.UsuarioPreferenciasRepository; If you want this repository to be a JPA repository, consider annotating your entities with one of these annotations: jakarta.persistence.Entity, jakarta.persistence.MappedSuperclass (preferred), or consider extending one of the following types with your repository: org.springframework.data.jpa.repository.JpaRepository
+2026-06-25 18:52:34.770 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 179 ms. Found 6 JPA repository interfaces.
+2026-06-25 18:52:34.775 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode
+2026-06-25 18:52:34.775 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data MongoDB repositories in DEFAULT mode.
+2026-06-25 18:52:34.785 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.sistema.pedidos.repository.ClienteRepository; If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository
+2026-06-25 18:52:34.787 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.sistema.pedidos.repository.ComentarioRepository; If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository
+2026-06-25 18:52:34.788 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.sistema.pedidos.repository.DetallePedidoRepository; If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository
+2026-06-25 18:52:34.788 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.sistema.pedidos.repository.PedidoRepository; If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository
+2026-06-25 18:52:34.788 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.sistema.pedidos.repository.ProductoRepository; If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository
+2026-06-25 18:52:34.788 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationExtensionSupport - Spring Data MongoDB - Could not safely identify store assignment for repository candidate interface com.sistema.pedidos.repository.UsuarioRepository; If you want this repository to be a MongoDB repository, consider annotating your entities with one of these annotations: org.springframework.data.mongodb.core.mapping.Document (preferred), or consider extending one of the following types with your repository: org.springframework.data.mongodb.repository.MongoRepository
+2026-06-25 18:52:34.808 [restartedMain] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 34 ms. Found 3 MongoDB repository interfaces.
+2026-06-25 18:52:36.995 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2026-06-25 18:52:37.015 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8080"]
+2026-06-25 18:52:37.023 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-06-25 18:52:37.025 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.16]
+2026-06-25 18:52:37.165 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-06-25 18:52:37.171 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4055 ms
+2026-06-25 18:52:37.293 [restartedMain] DEBUG o.s.w.s.r.ResourceUrlEncodingFilter - Filter 'resourceUrlEncodingFilter' configured for use
+2026-06-25 18:52:37.565 [restartedMain] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-06-25 18:52:37.750 [restartedMain] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.3.1.Final
+2026-06-25 18:52:37.851 [restartedMain] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2026-06-25 18:52:38.460 [restartedMain] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-06-25 18:52:38.537 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2026-06-25 18:52:38.980 [restartedMain] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@643be75c
+2026-06-25 18:52:38.987 [restartedMain] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2026-06-25 18:52:39.120 [restartedMain] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-06-25 18:52:41.745 [restartedMain] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-06-25 18:52:42.095 [restartedMain] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-06-25 18:52:42.912 [restartedMain] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-06-25 18:52:44.715 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-06-25 18:52:45.850 [restartedMain] INFO  o.s.b.a.w.s.WelcomePageHandlerMapping - Adding welcome page template: index
+2026-06-25 18:52:46.047 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - 37 mappings in 'requestMappingHandlerMapping'
+2026-06-25 18:52:46.835 [restartedMain] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2026-06-25 18:52:46.985 [restartedMain] INFO  o.s.s.web.DefaultSecurityFilterChain - Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@28df1c40, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1ccf1e45, org.springframework.security.web.context.SecurityContextHolderFilter@7ed13d8a, org.springframework.security.web.header.HeaderWriterFilter@2a14e43b, org.springframework.web.filter.CorsFilter@66e5952e, org.springframework.security.web.csrf.CsrfFilter@709371f, org.springframework.security.web.authentication.logout.LogoutFilter@b4b8943, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@529508aa, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7682dfd2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1a2daebc, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@645645, org.springframework.security.web.access.ExceptionTranslationFilter@17311807, org.springframework.security.web.access.intercept.AuthorizationFilter@5a7dcb3d]
+2026-06-25 18:52:47.261 [restartedMain] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerAdapter - ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2026-06-25 18:52:47.338 [restartedMain] DEBUG o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2026-06-25 18:52:47.690 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8080"]
+2026-06-25 18:52:47.748 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path ''
+2026-06-25 18:52:47.762 [restartedMain] INFO  c.s.p.SistemaGestionPedidosApplication - Started SistemaGestionPedidosApplication in 15.636 seconds (process running for 17.128)
+2026-06-25 18:53:03.331 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-06-25 18:53:03.331 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-06-25 18:53:03.331 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected StandardServletMultipartResolver
+2026-06-25 18:53:03.331 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected AcceptHeaderLocaleResolver
+2026-06-25 18:53:03.336 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected FixedThemeResolver
+2026-06-25 18:53:03.336 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.view.DefaultRequestToViewNameTranslator@48eff2e2
+2026-06-25 18:53:03.336 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Detected org.springframework.web.servlet.support.SessionFlashMapManager@45ac4205
+2026-06-25 18:53:03.336 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - enableLoggingRequestDetails='false': request parameters and headers will be masked to prevent unsafe logging of potentially sensitive data
+2026-06-25 18:53:03.341 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 10 ms
+2026-06-25 18:53:03.372 [http-nio-8080-exec-1] WARN  o.s.w.s.h.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/' (previous null). Performing CorsConfiguration lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-06-25 18:53:03.406 [http-nio-8080-exec-1] WARN  o.s.w.s.h.HandlerMappingIntrospector - Cache miss for REQUEST dispatch to '/' (previous null). Performing MatchableHandlerMapping lookup. This is logged once only at WARN level, and every time at TRACE.
+2026-06-25 18:53:03.416 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/", parameters={}
+2026-06-25 18:53:03.419 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.HomeController#index(Model)
+2026-06-25 18:53:03.616 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(c1_0.id_cliente) 
+    from
+        clientes c1_0
+2026-06-25 18:53:03.652 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(p1_0.id_producto) 
+    from
+        productos p1_0 
+    where
+        p1_0.activo=true
+2026-06-25 18:53:03.674 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(p1_0.id_pedido) 
+    from
+        pedidos p1_0 
+    where
+        p1_0.estado=?
+2026-06-25 18:53:03.681 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        sum(p1_0.total) 
+    from
+        pedidos p1_0 
+    where
+        p1_0.estado='completado'
+2026-06-25 18:53:03.706 [http-nio-8080-exec-1] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:53:04.633 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:53:04.637 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:53:04.641 [http-nio-8080-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:53:04.646 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/jquery/3.7.1/jquery.min.js", parameters={}
+2026-06-25 18:53:04.647 [http-nio-8080-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:53:04.647 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:53:04.651 [http-nio-8080-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:53:04.666 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:53:04.669 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:53:04.672 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:53:27.166 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:53:27.166 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:53:27.202 [http-nio-8080-exec-6] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:53:27.224 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:53:27.266 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:53:27.266 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:53:27.266 [http-nio-8080-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:53:27.266 [http-nio-8080-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:53:27.278 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:53:27.278 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:53:27.364 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:53:27.364 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:53:27.370 [http-nio-8080-exec-10] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected '*/*' given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8]
+2026-06-25 18:53:27.380 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:55:36.841 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:55:36.841 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:55:36.846 [http-nio-8080-exec-5] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:55:36.869 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:55:36.909 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:55:36.911 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:55:36.913 [http-nio-8080-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:55:36.915 [http-nio-8080-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:55:36.923 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:55:36.925 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:55:36.998 [http-nio-8080-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:55:36.998 [http-nio-8080-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:55:37.001 [http-nio-8080-exec-9] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected '*/*' given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8]
+2026-06-25 18:55:37.016 [http-nio-8080-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:55:46.008 [http-nio-8080-exec-10] INFO  c.s.p.s.CustomUserDetailsService - Intentando cargar usuario: angelo_andy_francis
+2026-06-25 18:55:46.151 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_usuario,
+        u1_0.activo,
+        u1_0.contrasena,
+        u1_0.fecha_creacion,
+        u1_0.nombre_usuario,
+        u1_0.rol,
+        u1_0.ultimo_acceso 
+    from
+        usuarios u1_0 
+    where
+        u1_0.nombre_usuario=?
+2026-06-25 18:55:46.156 [http-nio-8080-exec-10] ERROR c.s.p.s.CustomUserDetailsService - Usuario no encontrado: angelo_andy_francis
+2026-06-25 18:55:46.325 [http-nio-8080-exec-10] INFO  c.s.p.s.CustomUserDetailsService - Intentando cargar usuario: angelo_andy_francis
+2026-06-25 18:55:46.329 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_usuario,
+        u1_0.activo,
+        u1_0.contrasena,
+        u1_0.fecha_creacion,
+        u1_0.nombre_usuario,
+        u1_0.rol,
+        u1_0.ultimo_acceso 
+    from
+        usuarios u1_0 
+    where
+        u1_0.nombre_usuario=?
+2026-06-25 18:55:46.333 [http-nio-8080-exec-10] ERROR c.s.p.s.CustomUserDetailsService - Usuario no encontrado: angelo_andy_francis
+2026-06-25 18:55:46.506 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login?error=true", parameters={masked}
+2026-06-25 18:55:46.506 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:55:46.506 [http-nio-8080-exec-1] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:55:46.525 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:55:46.563 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:55:46.563 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:55:46.563 [http-nio-8080-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:55:46.563 [http-nio-8080-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:55:46.571 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:55:46.571 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:55:46.631 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:55:46.632 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:55:46.634 [http-nio-8080-exec-5] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected '*/*' given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8]
+2026-06-25 18:55:46.644 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:02.363 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:56:02.363 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:56:02.366 [http-nio-8080-exec-6] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:56:02.383 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:02.425 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:56:02.425 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:56:02.427 [http-nio-8080-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:02.427 [http-nio-8080-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:02.431 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:02.436 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:02.498 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:56:02.498 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:56:02.501 [http-nio-8080-exec-10] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected '*/*' given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8]
+2026-06-25 18:56:02.511 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:08.387 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/", parameters={}
+2026-06-25 18:56:08.387 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.HomeController#index(Model)
+2026-06-25 18:56:08.392 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(c1_0.id_cliente) 
+    from
+        clientes c1_0
+2026-06-25 18:56:08.397 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(p1_0.id_producto) 
+    from
+        productos p1_0 
+    where
+        p1_0.activo=true
+2026-06-25 18:56:08.403 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        count(p1_0.id_pedido) 
+    from
+        pedidos p1_0 
+    where
+        p1_0.estado=?
+2026-06-25 18:56:08.409 [http-nio-8080-exec-1] DEBUG org.hibernate.SQL - 
+    select
+        sum(p1_0.total) 
+    from
+        pedidos p1_0 
+    where
+        p1_0.estado='completado'
+2026-06-25 18:56:08.411 [http-nio-8080-exec-1] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:56:08.468 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:08.487 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:56:08.487 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/jquery/3.7.1/jquery.min.js", parameters={}
+2026-06-25 18:56:08.487 [http-nio-8080-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:08.487 [http-nio-8080-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:08.487 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:56:08.491 [http-nio-8080-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:08.496 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:08.497 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:08.499 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:14.506 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/", parameters={}
+2026-06-25 18:56:14.506 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.HomeController#index(Model)
+2026-06-25 18:56:14.509 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(c1_0.id_cliente) 
+    from
+        clientes c1_0
+2026-06-25 18:56:14.519 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(p1_0.id_producto) 
+    from
+        productos p1_0 
+    where
+        p1_0.activo=true
+2026-06-25 18:56:14.524 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        count(p1_0.id_pedido) 
+    from
+        pedidos p1_0 
+    where
+        p1_0.estado=?
+2026-06-25 18:56:14.536 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        sum(p1_0.total) 
+    from
+        pedidos p1_0 
+    where
+        p1_0.estado='completado'
+2026-06-25 18:56:14.538 [http-nio-8080-exec-5] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:56:14.597 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:14.627 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:56:14.627 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:56:14.627 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/jquery/3.7.1/jquery.min.js", parameters={}
+2026-06-25 18:56:14.630 [http-nio-8080-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:14.630 [http-nio-8080-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:14.630 [http-nio-8080-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:14.637 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:14.637 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:14.637 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:27.402 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:56:27.402 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:56:27.402 [http-nio-8080-exec-10] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:56:27.419 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:27.458 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:56:27.458 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:56:27.458 [http-nio-8080-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:27.459 [http-nio-8080-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:27.464 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:27.464 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:27.547 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:56:27.547 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:56:27.551 [http-nio-8080-exec-3] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected '*/*' given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8]
+2026-06-25 18:56:27.562 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:30.749 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/registro", parameters={}
+2026-06-25 18:56:30.749 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarRegistro(Model)
+2026-06-25 18:56:30.752 [http-nio-8080-exec-5] INFO  c.s.p.controller.AuthController - Mostrando formulario de registro
+2026-06-25 18:56:30.759 [http-nio-8080-exec-5] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:56:30.774 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:30.815 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:56:30.815 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:56:30.815 [http-nio-8080-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:30.815 [http-nio-8080-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:30.824 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:30.824 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:30.874 [http-nio-8080-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:56:30.874 [http-nio-8080-exec-9] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:56:30.874 [http-nio-8080-exec-9] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected '*/*' given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8]
+2026-06-25 18:56:30.892 [http-nio-8080-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:46.855 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:56:46.855 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:56:46.859 [http-nio-8080-exec-10] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:56:46.878 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:46.923 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:56:46.923 [http-nio-8080-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:46.923 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:56:46.925 [http-nio-8080-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:46.929 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:46.929 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:46.984 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:56:46.984 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:56:46.984 [http-nio-8080-exec-3] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected '*/*' given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8]
+2026-06-25 18:56:46.992 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:54.323 [http-nio-8080-exec-5] INFO  c.s.p.s.CustomUserDetailsService - Intentando cargar usuario: angelo
+2026-06-25 18:56:54.326 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_usuario,
+        u1_0.activo,
+        u1_0.contrasena,
+        u1_0.fecha_creacion,
+        u1_0.nombre_usuario,
+        u1_0.rol,
+        u1_0.ultimo_acceso 
+    from
+        usuarios u1_0 
+    where
+        u1_0.nombre_usuario=?
+2026-06-25 18:56:54.326 [http-nio-8080-exec-5] ERROR c.s.p.s.CustomUserDetailsService - Usuario no encontrado: angelo
+2026-06-25 18:56:54.503 [http-nio-8080-exec-5] INFO  c.s.p.s.CustomUserDetailsService - Intentando cargar usuario: angelo
+2026-06-25 18:56:54.506 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_usuario,
+        u1_0.activo,
+        u1_0.contrasena,
+        u1_0.fecha_creacion,
+        u1_0.nombre_usuario,
+        u1_0.rol,
+        u1_0.ultimo_acceso 
+    from
+        usuarios u1_0 
+    where
+        u1_0.nombre_usuario=?
+2026-06-25 18:56:54.506 [http-nio-8080-exec-5] ERROR c.s.p.s.CustomUserDetailsService - Usuario no encontrado: angelo
+2026-06-25 18:56:54.678 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login?error=true", parameters={masked}
+2026-06-25 18:56:54.678 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:56:54.680 [http-nio-8080-exec-6] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:56:54.687 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:54.725 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:56:54.725 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:56:54.728 [http-nio-8080-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:54.728 [http-nio-8080-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:56:54.733 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:54.736 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:56:54.778 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:56:54.783 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:56:54.783 [http-nio-8080-exec-10] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected '*/*' given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8]
+2026-06-25 18:56:54.793 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:57:36.816 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/registro", parameters={}
+2026-06-25 18:57:36.818 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarRegistro(Model)
+2026-06-25 18:57:36.818 [http-nio-8080-exec-1] INFO  c.s.p.controller.AuthController - Mostrando formulario de registro
+2026-06-25 18:57:36.818 [http-nio-8080-exec-1] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:57:36.834 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:57:36.880 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:57:36.880 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:57:36.880 [http-nio-8080-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:57:36.880 [http-nio-8080-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:57:36.888 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:57:36.888 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:57:36.936 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:57:36.936 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:57:36.942 [http-nio-8080-exec-6] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected '*/*' given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8]
+2026-06-25 18:57:36.954 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:57:57.895 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - POST "/registro", parameters={masked}
+2026-06-25 18:57:57.895 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#registrar(String, String, Model, RedirectAttributes)
+2026-06-25 18:57:57.901 [http-nio-8080-exec-7] INFO  c.s.p.controller.AuthController - Intento de registro - Usuario: angelo
+2026-06-25 18:57:57.904 [http-nio-8080-exec-7] INFO  c.s.pedidos.service.UsuarioService - Buscando usuario: angelo
+2026-06-25 18:57:57.907 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_usuario,
+        u1_0.activo,
+        u1_0.contrasena,
+        u1_0.fecha_creacion,
+        u1_0.nombre_usuario,
+        u1_0.rol,
+        u1_0.ultimo_acceso 
+    from
+        usuarios u1_0 
+    where
+        u1_0.nombre_usuario=?
+2026-06-25 18:57:57.912 [http-nio-8080-exec-7] INFO  c.s.p.controller.AuthController - Creando nuevo usuario: angelo
+2026-06-25 18:57:57.915 [http-nio-8080-exec-7] INFO  c.s.pedidos.service.UsuarioService - Creando usuario: angelo
+2026-06-25 18:57:58.252 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    insert 
+    into
+        usuarios
+        (activo, contrasena, fecha_creacion, nombre_usuario, rol, ultimo_acceso) 
+    values
+        (?, ?, ?, ?, ?, ?)
+2026-06-25 18:57:58.305 [http-nio-8080-exec-7] INFO  c.s.p.controller.AuthController - Usuario creado exitosamente: angelo
+2026-06-25 18:57:58.317 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.view.RedirectView - View name 'redirect:', model {}
+2026-06-25 18:57:58.323 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 302 FOUND
+2026-06-25 18:57:58.335 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:57:58.338 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:57:58.338 [http-nio-8080-exec-8] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:57:58.355 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:57:58.396 [http-nio-8080-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:57:58.398 [http-nio-8080-exec-9] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:57:58.398 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:57:58.400 [http-nio-8080-exec-10] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:57:58.405 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:57:58.405 [http-nio-8080-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:57:58.508 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/login", parameters={}
+2026-06-25 18:57:58.508 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#mostrarLogin(String, String, Model)
+2026-06-25 18:57:58.510 [http-nio-8080-exec-1] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected '*/*' given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8]
+2026-06-25 18:57:58.521 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:20.931 [http-nio-8080-exec-3] INFO  c.s.p.s.CustomUserDetailsService - Intentando cargar usuario: angelo
+2026-06-25 18:58:20.937 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_usuario,
+        u1_0.activo,
+        u1_0.contrasena,
+        u1_0.fecha_creacion,
+        u1_0.nombre_usuario,
+        u1_0.rol,
+        u1_0.ultimo_acceso 
+    from
+        usuarios u1_0 
+    where
+        u1_0.nombre_usuario=?
+2026-06-25 18:58:20.957 [http-nio-8080-exec-3] INFO  c.s.p.s.CustomUserDetailsService - Usuario encontrado: angelo, rol: CLIENTE, activo: true
+2026-06-25 18:58:20.958 [http-nio-8080-exec-3] INFO  c.s.p.s.CustomUserDetailsService - Autoridades asignadas: [ROLE_CLIENTE]
+2026-06-25 18:58:21.127 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/", parameters={}
+2026-06-25 18:58:21.127 [http-nio-8080-exec-2] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.HomeController#index(Model)
+2026-06-25 18:58:21.127 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(c1_0.id_cliente) 
+    from
+        clientes c1_0
+2026-06-25 18:58:21.136 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(p1_0.id_producto) 
+    from
+        productos p1_0 
+    where
+        p1_0.activo=true
+2026-06-25 18:58:21.141 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        count(p1_0.id_pedido) 
+    from
+        pedidos p1_0 
+    where
+        p1_0.estado=?
+2026-06-25 18:58:21.146 [http-nio-8080-exec-2] DEBUG org.hibernate.SQL - 
+    select
+        sum(p1_0.total) 
+    from
+        pedidos p1_0 
+    where
+        p1_0.estado='completado'
+2026-06-25 18:58:21.146 [http-nio-8080-exec-2] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:58:21.217 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:21.246 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/jquery/3.7.1/jquery.min.js", parameters={}
+2026-06-25 18:58:21.246 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:58:21.246 [http-nio-8080-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:21.246 [http-nio-8080-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:21.250 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:58:21.253 [http-nio-8080-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:21.255 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:21.259 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:21.259 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:27.155 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/", parameters={}
+2026-06-25 18:58:27.155 [http-nio-8080-exec-8] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.HomeController#index(Model)
+2026-06-25 18:58:27.157 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(c1_0.id_cliente) 
+    from
+        clientes c1_0
+2026-06-25 18:58:27.163 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(p1_0.id_producto) 
+    from
+        productos p1_0 
+    where
+        p1_0.activo=true
+2026-06-25 18:58:27.170 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        count(p1_0.id_pedido) 
+    from
+        pedidos p1_0 
+    where
+        p1_0.estado=?
+2026-06-25 18:58:27.176 [http-nio-8080-exec-8] DEBUG org.hibernate.SQL - 
+    select
+        sum(p1_0.total) 
+    from
+        pedidos p1_0 
+    where
+        p1_0.estado='completado'
+2026-06-25 18:58:27.179 [http-nio-8080-exec-8] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:58:27.235 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:27.256 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:58:27.256 [http-nio-8080-exec-10] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:27.256 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:58:27.256 [http-nio-8080-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/jquery/3.7.1/jquery.min.js", parameters={}
+2026-06-25 18:58:27.256 [http-nio-8080-exec-9] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:27.256 [http-nio-8080-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:27.263 [http-nio-8080-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:27.263 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:27.263 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:27.836 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - "FORWARD" dispatch for GET "/acceso-denegado", parameters={}
+2026-06-25 18:58:27.841 [http-nio-8080-exec-1] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#accesoDenegado()
+2026-06-25 18:58:27.846 [http-nio-8080-exec-1] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:58:27.856 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "FORWARD" dispatch, status 403
+2026-06-25 18:58:27.888 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:58:27.890 [http-nio-8080-exec-3] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:27.890 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:58:27.890 [http-nio-8080-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:27.896 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:27.896 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:27.926 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/favicon.ico", parameters={}
+2026-06-25 18:58:27.926 [http-nio-8080-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/], classpath [resources/], classpath [static/], classpath [public/], ServletContext [/]]
+2026-06-25 18:58:27.933 [http-nio-8080-exec-6] DEBUG o.s.w.s.r.ResourceHttpRequestHandler - Resource not found
+2026-06-25 18:58:27.939 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource favicon.ico.]
+2026-06-25 18:58:27.939 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 404 NOT_FOUND
+2026-06-25 18:58:27.944 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - "ERROR" dispatch for GET "/error", parameters={}
+2026-06-25 18:58:27.944 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to org.springframework.boot.autoconfigure.web.servlet.error.BasicErrorController#error(HttpServletRequest)
+2026-06-25 18:58:27.982 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Using 'application/json;q=0.8', given [image/avif, image/webp, image/apng, image/svg+xml, image/*, */*;q=0.8] and supported [application/json, application/*+json]
+2026-06-25 18:58:27.988 [http-nio-8080-exec-6] DEBUG o.s.w.s.m.m.a.HttpEntityMethodProcessor - Writing [{timestamp=Thu Jun 25 18:58:27 COT 2026, status=404, error=Not Found, trace=org.springframework.web. (truncated)...]
+2026-06-25 18:58:28.073 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Exiting from "ERROR" dispatch, status 404
+2026-06-25 18:58:34.194 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/", parameters={}
+2026-06-25 18:58:34.196 [http-nio-8080-exec-7] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.HomeController#index(Model)
+2026-06-25 18:58:34.196 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(c1_0.id_cliente) 
+    from
+        clientes c1_0
+2026-06-25 18:58:34.203 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(p1_0.id_producto) 
+    from
+        productos p1_0 
+    where
+        p1_0.activo=true
+2026-06-25 18:58:34.208 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        count(p1_0.id_pedido) 
+    from
+        pedidos p1_0 
+    where
+        p1_0.estado=?
+2026-06-25 18:58:34.211 [http-nio-8080-exec-7] DEBUG org.hibernate.SQL - 
+    select
+        sum(p1_0.total) 
+    from
+        pedidos p1_0 
+    where
+        p1_0.estado='completado'
+2026-06-25 18:58:34.227 [http-nio-8080-exec-7] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:58:34.281 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:34.308 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:58:34.309 [http-nio-8080-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:58:34.309 [http-nio-8080-exec-5] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:34.308 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/jquery/3.7.1/jquery.min.js", parameters={}
+2026-06-25 18:58:34.311 [http-nio-8080-exec-9] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:34.311 [http-nio-8080-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:34.316 [http-nio-8080-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:34.317 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:34.317 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:35.524 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - GET "/pedidos", parameters={}
+2026-06-25 18:58:35.526 [http-nio-8080-exec-10] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.PedidoController#listar(String, String, Model)
+2026-06-25 18:58:35.528 [http-nio-8080-exec-10] INFO  c.s.pedidos.service.PedidoService - Obteniendo todos los pedidos
+2026-06-25 18:58:35.541 [http-nio-8080-exec-10] DEBUG org.hibernate.SQL - 
+    select
+        p1_0.id_pedido,
+        p1_0.id_cliente,
+        c1_0.id_cliente,
+        c1_0.email,
+        c1_0.fecha_registro,
+        c1_0.nombre,
+        c1_0.telefono,
+        c1_0.ultimo_acceso,
+        p1_0.estado,
+        p1_0.fecha_pedido,
+        p1_0.total 
+    from
+        pedidos p1_0 
+    join
+        clientes c1_0 
+            on c1_0.id_cliente=p1_0.id_cliente
+2026-06-25 18:58:35.572 [http-nio-8080-exec-10] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:58:35.656 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:58:35.656 [http-nio-8080-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:35.661 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:35.669 [http-nio-8080-exec-10] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:35.676 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/jquery/3.7.1/jquery.min.js", parameters={}
+2026-06-25 18:58:35.676 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:58:35.676 [http-nio-8080-exec-2] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:35.676 [http-nio-8080-exec-1] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:35.691 [http-nio-8080-exec-2] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:35.691 [http-nio-8080-exec-1] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:37.938 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - GET "/comentarios/mis-comentarios", parameters={}
+2026-06-25 18:58:37.943 [http-nio-8080-exec-3] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.ComentarioController#misComentarios(Model)
+2026-06-25 18:58:37.962 [http-nio-8080-exec-3] INFO  c.s.pedidos.service.UsuarioService - Buscando usuario: angelo
+2026-06-25 18:58:37.967 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_usuario,
+        u1_0.activo,
+        u1_0.contrasena,
+        u1_0.fecha_creacion,
+        u1_0.nombre_usuario,
+        u1_0.rol,
+        u1_0.ultimo_acceso 
+    from
+        usuarios u1_0 
+    where
+        u1_0.nombre_usuario=?
+2026-06-25 18:58:37.984 [http-nio-8080-exec-3] DEBUG org.hibernate.SQL - 
+    select
+        c1_0.id_comentario,
+        c1_0.activo,
+        c1_0.calificacion,
+        c1_0.contenido,
+        c1_0.fecha_creacion,
+        c1_0.id_producto,
+        p1_0.id_producto,
+        p1_0.activo,
+        p1_0.categoria,
+        p1_0.descripcion,
+        p1_0.nombre,
+        p1_0.precio,
+        p1_0.stock,
+        c1_0.id_usuario 
+    from
+        comentarios c1_0 
+    join
+        productos p1_0 
+            on p1_0.id_producto=c1_0.id_producto 
+    where
+        c1_0.id_usuario=? 
+        and c1_0.activo=true 
+    order by
+        c1_0.fecha_creacion desc
+2026-06-25 18:58:38.009 [http-nio-8080-exec-3] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:58:38.046 [http-nio-8080-exec-3] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:38.086 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:58:38.086 [http-nio-8080-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:58:38.086 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/jquery/3.7.1/jquery.min.js", parameters={}
+2026-06-25 18:58:38.086 [http-nio-8080-exec-9] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:38.086 [http-nio-8080-exec-7] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:38.086 [http-nio-8080-exec-6] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:38.094 [http-nio-8080-exec-7] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:38.094 [http-nio-8080-exec-9] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:38.094 [http-nio-8080-exec-6] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:40.227 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - GET "/perfil", parameters={}
+2026-06-25 18:58:40.229 [http-nio-8080-exec-5] DEBUG o.s.w.s.m.m.a.RequestMappingHandlerMapping - Mapped to com.sistema.pedidos.controller.AuthController#verPerfil(Model)
+2026-06-25 18:58:40.229 [http-nio-8080-exec-5] INFO  c.s.pedidos.service.UsuarioService - Buscando usuario: angelo
+2026-06-25 18:58:40.238 [http-nio-8080-exec-5] DEBUG org.hibernate.SQL - 
+    select
+        u1_0.id_usuario,
+        u1_0.activo,
+        u1_0.contrasena,
+        u1_0.fecha_creacion,
+        u1_0.nombre_usuario,
+        u1_0.rol,
+        u1_0.ultimo_acceso 
+    from
+        usuarios u1_0 
+    where
+        u1_0.nombre_usuario=?
+2026-06-25 18:58:40.246 [http-nio-8080-exec-5] DEBUG o.s.w.s.v.ContentNegotiatingViewResolver - Selected 'text/html' given [text/html, application/xhtml+xml, image/avif, image/webp, image/apng, application/xml;q=0.9, */*;q=0.8, application/signed-exchange;v=b3;q=0.7]
+2026-06-25 18:58:40.270 [http-nio-8080-exec-5] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:40.304 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/js/bootstrap.bundle.min.js", parameters={}
+2026-06-25 18:58:40.304 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - GET "/webjars/bootstrap/5.3.2/css/bootstrap.min.css", parameters={}
+2026-06-25 18:58:40.305 [http-nio-8080-exec-8] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:40.305 [http-nio-8080-exec-4] DEBUG o.s.w.s.h.SimpleUrlHandlerMapping - Mapped to ResourceHttpRequestHandler [classpath [META-INF/resources/webjars/]]
+2026-06-25 18:58:40.310 [http-nio-8080-exec-4] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK
+2026-06-25 18:58:40.313 [http-nio-8080-exec-8] DEBUG o.s.web.servlet.DispatcherServlet - Completed 200 OK

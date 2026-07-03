@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::content})}">
+<head>
+    <title th:text="${esNuevo ? 'Nuevo Producto' : 'Editar Producto'} + ' - Sistema de Gestión de Pedidos'">Producto</title>
+</head>
+<body>
+    <div th:fragment="content">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="bi" th:classappend="${esNuevo ? 'bi-plus-circle' : 'bi-pencil'}"></i>
+                    <span th:text="${esNuevo ? 'Nuevo Producto' : 'Editar Producto'}">Producto</span>
+                </h5>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/productos/guardar}" th:object="${producto}" method="post">
+                    <input type="hidden" th:field="*{idProducto}">
+                    
+                    <div class="row">
+                        <div class="col-md-8 mb-3">
+                            <label for="nombre" class="form-label">Nombre del Producto *</label>
+                            <input type="text" th:field="*{nombre}" class="form-control" 
+                                   id="nombre" placeholder="Ej: Laptop HP Core i7" required>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="categoria" class="form-label">Categoría</label>
+                            <input type="text" th:field="*{categoria}" class="form-control" 
+                                   id="categoria" list="categorias" placeholder="Ej: Electrónica">
+                            <datalist id="categorias">
+                                <option th:each="cat : ${categorias}" th:value="${cat}">
+                            </datalist>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="descripcion" class="form-label">Descripción</label>
+                        <textarea th:field="*{descripcion}" class="form-control" id="descripcion" 
+                                  rows="3" placeholder="Descripción detallada del producto..."></textarea>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="precio" class="form-label">Precio *</label>
+                            <div class="input-group">
+                                <span class="input-group-text">S/</span>
+                                <input type="number" th:field="*{precio}" class="form-control" 
+                                       id="precio" step="0.01" min="0" placeholder="0.00" required>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="stock" class="form-label">Stock *</label>
+                            <div class="input-group">
+                                <input type="number" th:field="*{stock}" class="form-control" 
+                                       id="stock" min="0" placeholder="0" required>
+                                <span class="input-group-text">unidades</span>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 mb-3">
+                            <label for="activo" class="form-label">Estado</label>
+                            <select th:field="*{activo}" class="form-select" id="activo">
+                                <option value="true">Activo</option>
+                                <option value="false">Inactivo</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-success btn-lg">
+                            <i class="bi bi-check-circle"></i>
+                            <span th:text="${esNuevo ? 'Crear Producto' : 'Actualizar Producto'}">Guardar</span>
+                        </button>
+                        <a th:href="@{/productos}" class="btn btn-secondary btn-lg">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Ayuda -->
+        <div class="alert alert-info mt-3">
+            <i class="bi bi-lightbulb"></i>
+            <strong>Consejo:</strong> Asegúrate de mantener el stock actualizado. Los productos con menos de 10 unidades aparecerán destacados en rojo.
+        </div>
+    </div>
+</body>
+</html>

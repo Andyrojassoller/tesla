@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::content})}">
+<head>
+    <title>Nuevo Pedido - Sistema de Gestión de Pedidos</title>
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+</head>
+<body>
+    <div th:fragment="content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2><i class="bi bi-cart-plus"></i> Nuevo Pedido</h2>
+            <a th:href="@{/pedidos}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Volver
+            </a>
+        </div>
+
+        <div class="card">
+            <div class="card-body">
+                <form id="pedidoForm">
+                    <!-- Selección de Cliente -->
+                    <div class="mb-4">
+                        <h5 class="card-title"><i class="bi bi-person"></i> Cliente</h5>
+                        <div class="row">
+                            <!-- Si es ADMIN: mostrar selector -->
+                            <div class="col-md-6" th:if="${esAdmin}">
+                                <label for="cliente" class="form-label">Seleccionar Cliente *</label>
+                                <select class="form-select" id="cliente" required>
+                                    <option value="">-- Seleccione un cliente --</option>
+                                    <option th:each="cliente : ${clientes}" 
+                                            th:value="${cliente.idCliente}"
+                                            th:text="${cliente.nombre + ' (' + cliente.email + ')'}">
+                                    </option>
+                                </select>
+                            </div>
+                            
+                            <!-- Si es CLIENTE: mostrar info y campo oculto -->
+                            <div class="col-md-12" th:unless="${esAdmin}">
+                                <div class="alert alert-info" th:if="${clienteLogueado}">
+                                    <i class="bi bi-person-circle"></i>
+                                    <strong>Cliente:</strong> <span th:text="${clienteLogueado.nombre}"></span><br>
+                                    <strong>Email:</strong> <span th:text="${clienteLogueado.email}"></span>
+                                </div>
+                                <div class="alert alert-warning" th:unless="${clienteLogueado}">
+                                    <i class="bi bi-exclamation-triangle"></i>
+                                    <strong>Atención:</strong> No se encontró un cliente asociado a tu usuario. 
+                                    Por favor contacta al administrador.
+                                </div>
+                                <input type="hidden" id="cliente" th:value="${clienteLogueado?.idCliente}">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Productos -->
+                    <div class="mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h5 class="card-title mb-0"><i class="bi bi-box-seam"></i> Productos</h5>
+                            <button type="button" class="btn btn-primary btn-sm" onclick="agregarProducto()">
+                                <i class="bi bi-plus-circle"></i> Agregar Producto
+                            </button>
+                        </div>
+                        
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="productosTable">
+                                <thead>
+                                    <tr>
+                                        <th>Producto</th>
+                                        <th style="width: 150px;">Precio Unit.</th>
+                                        <th style="width: 120px;">Cantidad</th>
+                                        <th style="width: 150px;">Subtotal</th>
+                                        <th style="width: 80px;">Acción</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="productosBody">
+                                    <!-- Los productos se agregan aquí dinámicamente -->
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <td colspan="3" class="text-end"><strong>Total:</strong></td>
+                                        <td colspan="2">
+                                            <strong>S/ <span id="total">0.00</span></strong>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+
+                        <div id="mensajeVacio" class="alert alert-info">
+                            <i class="bi bi-info-circle"></i> No hay productos agregados. 
+                            Haz clic en "Agregar Producto" para comenzar.
+                        </div>
+                    </div>
+
+                    <!-- Botones -->
+                    <div class="d-flex justify-content-end gap-2">
+                        <a th:href="@{/pedidos}" class="btn btn-secondary">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </a>
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-check-circle"></i> Crear Pedido
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Datos de productos en formato JSON para JavaScript -->
+        <script th:inline="javascript">
+            const productos = /*[[${productos}]]*/ [];
+            let contadorFilas = 0;
+            let productosSeleccionados = [];
+
+            function agregarProducto() {
+                contadorFilas++;
+                const tbody = document.getElementById('productosBody');
+                const mensajeVacio = document.getElementById('mensajeVacio');
+                
+                const fila = document.createElement('tr');
+                fila.id = 'fila_' + contadorFilas;
+                fila.innerHTML = `
+                    <td>
+                        <select class="form-select form-select-sm" id="prod_${contadorFilas}" onchange="actualizarPrecio(${contadorFilas})" required>
+                            <option value="">-- Seleccione --</option>
+                            ${productos.map(p => `<option value="${p.idProducto}" data-precio="${p.precio}" data-stock="${p.stock}">${p.nombre} (Stock: ${p.stock})</option>`).join('')}
+                        </select>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm text-end" id="precio_${contadorFilas}" readonly value="0.00">
+                    </td>
+                    <td>
+                        <input type="number" class="form-control form-control-sm" id="cant_${contadorFilas}" 
+                               min="1" value="1" onchange="calcularSubtotal(${contadorFilas})" required>
+                    </td>
+                    <td>
+                        <input type="text" class="form-control form-control-sm text-end" id="subtotal_${contadorFilas}" readonly value="0.00">
+                    </td>
+                    <td>
+                        <button type="button" class="btn btn-danger btn-sm" onclick="eliminarProducto(${contadorFilas})">
+                            <i class="bi bi-trash"></i>
+                        </button>
+                    </td>
+                `;
+                
+                tbody.appendChild(fila);
+                mensajeVacio.style.display = 'none';
+            }
+
+            function actualizarPrecio(id) {
+                const selectProducto = document.getElementById('prod_' + id);
+                const inputPrecio = document.getElementById('precio_' + id);
+                const inputCantidad = document.getElementById('cant_' + id);
+                
+                const option = selectProducto.options[selectProducto.selectedIndex];
+                const precio = option.getAttribute('data-precio') || 0;
+                
+                inputPrecio.value = parseFloat(precio).toFixed(2);
+                inputCantidad.max = option.getAttribute('data-stock') || 999;
+                
+                calcularSubtotal(id);
+            }
+
+            function calcularSubtotal(id) {
+                const precio = parseFloat(document.getElementById('precio_' + id).value) || 0;
+                const cantidad = parseInt(document.getElementById('cant_' + id).value) || 0;
+                const subtotal = precio * cantidad;
+                
+                document.getElementById('subtotal_' + id).value = subtotal.toFixed(2);
+                calcularTotal();
+            }
+
+            function calcularTotal() {
+                let total = 0;
+                const tbody = document.getElementById('productosBody');
+                const filas = tbody.getElementsByTagName('tr');
+                
+                for (let fila of filas) {
+                    const subtotalInput = fila.querySelector('[id^="subtotal_"]');
+                    if (subtotalInput) {
+                        total += parseFloat(subtotalInput.value) || 0;
+                    }
+                }
+                
+                document.getElementById('total').textContent = total.toFixed(2);
+            }
+
+            function eliminarProducto(id) {
+                const fila = document.getElementById('fila_' + id);
+                fila.remove();
+                calcularTotal();
+                
+                const tbody = document.getElementById('productosBody');
+                const mensajeVacio = document.getElementById('mensajeVacio');
+                if (tbody.children.length === 0) {
+                    mensajeVacio.style.display = 'block';
+                }
+            }
+
+            // Manejo del formulario
+            document.getElementById('pedidoForm').addEventListener('submit', async function(e) {
+                e.preventDefault();
+                
+                const clienteId = document.getElementById('cliente').value;
+                if (!clienteId) {
+                    alert('Por favor seleccione un cliente');
+                    return;
+                }
+                
+                const tbody = document.getElementById('productosBody');
+                if (tbody.children.length === 0) {
+                    alert('Debe agregar al menos un producto');
+                    return;
+                }
+                
+                // Recopilar productos
+                const detalles = [];
+                const filas = tbody.getElementsByTagName('tr');
+                
+                for (let fila of filas) {
+                    const id = fila.id.replace('fila_', '');
+                    const productoId = document.getElementById('prod_' + id).value;
+                    const cantidad = document.getElementById('cant_' + id).value;
+                    const precio = document.getElementById('precio_' + id).value;
+                    
+                    if (productoId && cantidad > 0) {
+                        detalles.push({
+                            producto: { idProducto: parseInt(productoId) },
+                            cantidad: parseInt(cantidad),
+                            precioUnitario: parseFloat(precio)
+                        });
+                    }
+                }
+                
+                if (detalles.length === 0) {
+                    alert('Debe agregar al menos un producto válido');
+                    return;
+                }
+                
+                const pedido = {
+                    cliente: { idCliente: parseInt(clienteId) },
+                    detalles: detalles
+                };
+                
+                try {
+                    // Obtener token CSRF
+                    const csrfToken = document.querySelector('meta[name="_csrf"]')?.content;
+                    const csrfHeader = document.querySelector('meta[name="_csrf_header"]')?.content;
+                    
+                    const headers = {
+                        'Content-Type': 'application/json'
+                    };
+                    
+                    if (csrfToken && csrfHeader) {
+                        headers[csrfHeader] = csrfToken;
+                    }
+                    
+                    const response = await fetch('/pedidos/guardar', {
+                        method: 'POST',
+                        headers: headers,
+                        body: JSON.stringify(pedido)
+                    });
+                    
+                    if (response.ok) {
+                        window.location.href = '/pedidos?mensaje=Pedido creado exitosamente';
+                    } else {
+                        const error = await response.text();
+                        alert('Error al crear el pedido: ' + error);
+                    }
+                } catch (error) {
+                    alert('Error de conexión: ' + error.message);
+                }
+            });
+
+            // Ocultar mensaje vacío al cargar
+            window.addEventListener('DOMContentLoaded', function() {
+                document.getElementById('mensajeVacio').style.display = 'block';
+            });
+        </script>
+
+        <style>
+            #mensajeVacio {
+                display: none;
+            }
+        </style>
+    </div>
+</body>
+</html>

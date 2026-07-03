@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      th:replace="~{layout :: layout(~{::title}, ~{::content})}">
+
+<head>
+    <title>Mis Preferencias</title>
+</head>
+
+<body>
+<div th:fragment="content">
+    <div class="container-fluid">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2><i class="bi bi-sliders"></i> Mis Preferencias</h2>
+            <a th:href="@{/perfil}" class="btn btn-secondary">
+                <i class="bi bi-arrow-left"></i> Volver al Perfil
+            </a>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8">
+                <form th:action="@{/preferencias/guardar}" th:object="${preferencias}" method="post">
+                    <!-- General -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-primary text-white">
+                            <h5 class="mb-0"><i class="bi bi-gear"></i> Configuración General</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Idioma</label>
+                                    <select th:field="*{idioma}" class="form-select">
+                                        <option value="es">Español</option>
+                                        <option value="en">English</option>
+                                        <option value="pt">Português</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-6 mb-3">
+                                    <label class="form-label">Tema de Interfaz</label>
+                                    <select th:field="*{temaInterfaz}" class="form-select">
+                                        <option value="light">Claro</option>
+                                        <option value="dark">Oscuro</option>
+                                        <option value="auto">Automático</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-12 mb-3">
+                                    <label class="form-label">Productos por Página</label>
+                                    <select th:field="*{productosPorPagina}" class="form-select">
+                                        <option value="5">5</option>
+                                        <option value="10">10</option>
+                                        <option value="20">20</option>
+                                        <option value="50">50</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pagos -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0"><i class="bi bi-credit-card"></i> Método de Pago</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label">Método Preferido</label>
+                                <select th:field="*{metodoPagoPreferido}" class="form-select">
+                                    <option value="">Seleccione...</option>
+                                    <option value="EFECTIVO">Efectivo</option>
+                                    <option value="TARJETA">Tarjeta de Crédito/Débito</option>
+                                    <option value="TRANSFERENCIA">Transferencia Bancaria</option>
+                                    <option value="YAPE">Yape</option>
+                                    <option value="PLIN">Plin</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Notificaciones -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-info text-white">
+                            <h5 class="mb-0"><i class="bi bi-bell"></i> Notificaciones</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-check form-switch mb-3">
+                                <input th:field="*{notificacionesEmail}" class="form-check-input" type="checkbox" id="notifEmail">
+                                <label class="form-check-label" for="notifEmail">
+                                    <strong>Notificaciones por Email</strong>
+                                    <br>
+                                    <small class="text-muted">Recibir actualizaciones de pedidos por correo electrónico</small>
+                                </label>
+                            </div>
+                            
+                            <div class="form-check form-switch mb-3">
+                                <input th:field="*{notificacionesSistema}" class="form-check-input" type="checkbox" id="notifSistema">
+                                <label class="form-check-label" for="notifSistema">
+                                    <strong>Notificaciones del Sistema</strong>
+                                    <br>
+                                    <small class="text-muted">Mostrar notificaciones en el navegador</small>
+                                </label>
+                            </div>
+                            
+                            <div class="form-check form-switch">
+                                <input th:field="*{newsletter}" class="form-check-input" type="checkbox" id="newsletter">
+                                <label class="form-check-label" for="newsletter">
+                                    <strong>Suscribirse al Newsletter</strong>
+                                    <br>
+                                    <small class="text-muted">Recibir ofertas y promociones especiales</small>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categorías Favoritas -->
+                    <div class="card mb-4">
+                        <div class="card-header bg-warning text-dark">
+                            <h5 class="mb-0"><i class="bi bi-star"></i> Categorías Favoritas</h5>
+                        </div>
+                        <div class="card-body">
+                            <p class="text-muted mb-3">Selecciona tus categorías de productos favoritas para recibir recomendaciones personalizadas</p>
+                            
+                            <div class="row">
+                                <div class="col-md-6" th:each="categoria : ${categorias}">
+                                    <div class="form-check mb-2">
+                                        <input class="form-check-input" type="checkbox" 
+                                               name="categoriasFavoritas" 
+                                               th:value="${categoria}"
+                                               th:checked="${preferencias.categoriasFavoritas != null and preferencias.categoriasFavoritas.contains(categoria)}"
+                                               th:id="'cat_' + ${categoria}">
+                                        <label class="form-check-label" th:for="'cat_' + ${categoria}" th:text="${categoria}">
+                                            Categoría
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-save"></i> Guardar Preferencias
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Info lateral -->
+            <div class="col-md-4">
+                <div class="card bg-light">
+                    <div class="card-body">
+                        <h5 class="card-title"><i class="bi bi-info-circle"></i> Información</h5>
+                        <p class="card-text">
+                            Personaliza tu experiencia en el sistema ajustando estas preferencias. 
+                            Los cambios se aplicarán inmediatamente.
+                        </p>
+                        <hr>
+                        <small class="text-muted">
+                            <i class="bi bi-shield-check"></i> Tus datos están seguros y protegidos
+                        </small>
+                    </div>
+                </div>
+                
+                <div class="card mt-3">
+                    <div class="card-body">
+                        <h6><i class="bi bi-clock-history"></i> Última actualización</h6>
+                        <p class="mb-0" th:if="${preferencias.fechaActualizacion != null}">
+                            <span th:text="${#temporals.format(preferencias.fechaActualizacion, 'dd/MM/yyyy')}"></span>
+                        </p>
+                        <p class="mb-0" th:unless="${preferencias.fechaActualizacion != null}">
+                            <em class="text-muted">Sin actualizar</em>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
