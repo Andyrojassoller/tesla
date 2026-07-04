@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      th:replace="~{layout :: layout(~{::title}, ~{::content})}">
+<head>
+    <title>Gestión de Recursos Humanos - TeslaERP</title>
+</head>
+<body>
+
+    <div th:fragment="content">
+        
+        <!-- ALERTAS DINÁMICAS -->
+        <div th:if="${param.success != null}" class="alert alert-success alert-dismissible fade show shadow-sm border-0 mb-4" role="alert">
+            <i class="bi bi-check-circle-fill me-2"></i>
+            <span th:if="${param.success[0] == 'guardado'}">¡Datos del empleado guardados correctamente!</span>
+            <span th:if="${param.success[0] == 'eliminado'}">Empleado removido del sistema con éxito.</span>
+            <span th:if="${param.success[0] == 'pago_exitoso'}">¡Pago de planilla procesado y registrado en Finanzas!</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <div th:if="${param.error != null}" class="alert alert-danger alert-dismissible fade show shadow-sm border-0 mb-4" role="alert">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <span>Ocurrió un error: No se pudo procesar el pago. Verifique el estado del empleado.</span>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+
+        <!-- ENCABEZADO Y ACCIÓN -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h4 class="mb-1 fw-bold text-dark"><i class="bi bi-people-fill text-primary"></i> Control de Recursos Humanos</h4>
+                <p class="text-muted small mb-0">Gestión de personal, asignación de cargos e integración contable de planillas.</p>
+            </div>
+            <button class="btn btn-primary shadow-sm" data-bs-toggle="modal" data-bs-target="#modalEmpleado" onclick="nuevoEmpleado()">
+                <i class="bi bi-person-plus-fill me-1"></i> Registrar Empleado
+            </button>
+        </div>
+
+        <!-- TABLA DE TRABAJADORES -->
+        <div class="card border-0 shadow-sm">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle mb-0">
+                        <thead class="table-light text-secondary text-uppercase fs-7">
+                            <tr>
+                                <th class="ps-4">Colaborador</th>
+                                <th>Identificación</th>
+                                <th>Contacto</th>
+                                <th>Puesto / Cargo</th>
+                                <th>Sueldo Mensual</th>
+                                <th>Estado</th>
+                                <th class="text-end pe-4">Acciones Autorizadas</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Si no hay trabajadores registrados -->
+                            <tr th:if="${#lists.isEmpty(empleados)}">
+                                <td colspan="7" class="text-center py-5 text-muted">
+                                    <i class="bi bi-person-bounding-box display-6 d-block mb-3 opacity-50"></i>
+                                    No hay empleados registrados en la empresa todavía.
+                                </td>
+                            </tr>
+                            <!-- Bucle de personal -->
+                            <tr th:each="emp : ${empleados}">
+                                <td class="ps-4">
+                                    <div class="d-flex align-items-center">
+                                        <div class="avatar-circle me-3 bg-primary-subtle text-primary fw-bold text-uppercase">
+                                            <span th:text="${#strings.substring(emp.nombre,0,1) + #strings.substring(emp.apellido,0,1)}">EM</span>
+                                        </div>
+                                        <div>
+                                            <h6 class="mb-0 fw-bold text-dark" th:text="${emp.nombre + ' ' + emp.apellido}">Nombre Completo</h6>
+                                            <small class="text-muted text-xs" th:text="'Ingreso: ' + ${#temporals.format(emp.fechaIngreso, 'dd/MM/yyyy')}">01/01/2026</small>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="badge bg-light text-dark border font-monospace" th:text="${emp.documentoIdentidad}">00000000</span>
+                                </td>
+                                <td>
+                                    <div class="text-dark fs-7" th:text="${emp.telefono}">999999999</div>
+                                    <small class="text-muted text-xs th-truncated" th:text="${emp.correo}">correo@empresa.com</small>
+                                </td>
+                                <td>
+                                    <span class="fw-semibold text-secondary" th:text="${emp.cargo}">Puesto</span>
+                                </td>
+                                <td>
+                                    <span class="fw-bold text-dark" th:text="'S/ ' + ${#numbers.formatDecimal(emp.sueldo, 1, 'COMMA', 2, 'POINT')}">S/ 0.00</span>
+                                </td>
+                                <td>
+                                    <span th:if="${emp.estado == 'ACTIVO'}" class="badge bg-success-subtle text-success border border-success-subtle px-2.5">Activo</span>
+                                    <span th:if="${emp.estado == 'INACTIVO'}" class="badge bg-danger-subtle text-danger border border-danger-subtle px-2.5">Inactivo</span>
+                                    <span th:if="${emp.estado == 'LICENCIA'}" class="badge bg-warning-subtle text-warning border border-warning-subtle px-2.5">Licencia</span>
+                                </td>
+                                <td class="text-end pe-4">
+                                    <div class="btn-group shadow-xs">
+                                        <!-- Botón de Pago Automático -->
+                                        <form th:action="@{/empleados/pagar/{id}(id=${emp.idEmpleado})}" method="POST" class="d-inline"
+                                              th:if="${emp.estado == 'ACTIVO'}" onsubmit="return confirm('¿Confirmar desembolso automático de planilla para este colaborador?');">
+                                            <button type="submit" class="btn btn-sm btn-outline-success" title="Registrar Pago de Planilla">
+                                                <i class="bi bi-cash-coin"></i> Pagar
+                                            </button>
+                                        </form>
+                                        <!-- Botón de Modificación -->
+                                        <button type="button" class="btn btn-sm btn-outline-primary" th:onclick="'abrirEditar(' + ${emp.idEmpleado} + ')'" title="Modificar Información">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                        <!-- Botón de Despido/Eliminación -->
+                                        <form th:action="@{/empleados/eliminar/{id}(id=${emp.idEmpleado})}" method="POST" class="d-inline"
+                                              onsubmit="return confirm('¿Está completamente seguro de eliminar este registro del sistema?');">
+                                            <button type="submit" class="btn btn-sm btn-outline-danger" title="Eliminar del Sistema">
+                                                <i class="bi bi-trash3-fill"></i>
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- MODAL ÚNICO DE EDICIÓN Y CREACIÓN (DINÁMICO) -->
+        <div class="modal fade" id="modalEmpleado" data-bs-backdrop="static" tabindex="-1" aria-labelledby="modalEmpleadoLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content border-0 shadow">
+                    <div class="modal-header bg-dark text-white py-3">
+                        <h5 class="modal-title" id="modalEmpleadoLabel">Formulario de Registro Laboral</h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form th:action="@{/empleados/guardar}" th:object="${empleadoNuevo}" method="POST">
+                        <div class="modal-body p-4">
+                            <!-- Campo oculto para el ID si es edición -->
+                            <input type="hidden" id="formId" th:field="*{idEmpleado}">
+                            <input type="hidden" id="formFecha" th:field="*{fechaIngreso}">
+
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-semibold text-secondary">Nombres</label>
+                                    <input type="text" id="formNombre" th:field="*{nombre}" class="form-control" required placeholder="Ej. Jorge">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-semibold text-secondary">Apellidos</label>
+                                    <input type="text" id="formApellido" th:field="*{apellido}" class="form-control" required placeholder="Ej. Paredes">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label small fw-semibold text-secondary">Documento Identidad (DNI/DIP)</label>
+                                    <input type="text" id="formDni" th:field="*{documentoIdentidad}" class="form-control font-monospace" required placeholder="Número de documento">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-semibold text-secondary">Número Móvil</label>
+                                    <input type="tel" id="formTelefono" th:field="*{telefono}" class="form-control" placeholder="999888777">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-semibold text-secondary">Correo Electrónico</label>
+                                    <input type="email" id="formCorreo" th:field="*{correo}" class="form-control" placeholder="nombre@empresa.com">
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-semibold text-secondary">Cargo Asignado</label>
+                                    <select id="formCargo" th:field="*{cargo}" class="form-select" required>
+                                        <option value="Administrador">Administrador</option>
+                                        <option value="Vendedor">Vendedor</option>
+                                        <option value="Repartidor">Repartidor</option>
+                                        <option value="Almacenero">Almacenero</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label small fw-semibold text-secondary">Sueldo Base Mensual (S/)</label>
+                                    <input type="number" step="0.01" id="formSueldo" th:field="*{sueldo}" class="form-control fw-bold text-success" required placeholder="0.00">
+                                </div>
+                                <div class="col-md-12">
+                                    <label class="form-label small fw-semibold text-secondary">Estado Operativo</label>
+                                    <select id="formEstado" th:field="*{estado}" class="form-select">
+                                        <option value="ACTIVO">ACTIVO</option>
+                                        <option value="INACTIVO">INACTIVO</option>
+                                        <option value="LICENCIA">LICENCIA</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer bg-light border-top-0 py-3">
+                            <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-dark px-4 shadow-sm"><i class="bi bi-save2-fill me-1"></i> Guardar Ficha</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- JAVASCRIPT DINÁMICO PARA MANEJAR EL MODAL -->
+        <script>
+            function nuevoEmpleado() {
+                document.getElementById('modalEmpleadoLabel').innerText = "Registrar Nuevo Empleado";
+                document.getElementById('formId').value = "";
+                document.getElementById('formFecha').value = "";
+                document.getElementById('formNombre').value = "";
+                document.getElementById('formApellido').value = "";
+                document.getElementById('formDni').value = "";
+                document.getElementById('formTelefono').value = "";
+                document.getElementById('formCorreo').value = "";
+                document.getElementById('formCargo').value = "Vendedor";
+                document.getElementById('formSueldo').value = "1025.00"; // Sueldo mínimo básico por defecto
+                document.getElementById('formEstado').value = "ACTIVO";
+            }
+
+            function abrirEditar(id) {
+                document.getElementById('modalEmpleadoLabel').innerText = "Modificar Ficha de Empleado";
+                
+                // Consumimos de forma asíncrona la API JSON que declaramos en el controlador
+                fetch('/empleados/api/' + id)
+                    .then(response => response.json())
+                    .then(data => {
+                        if(data && data.idEmpleado) {
+                            document.getElementById('formId').value = data.idEmpleado;
+                            document.getElementById('formFecha').value = data.fechaIngreso || "";
+                            document.getElementById('formNombre').value = data.nombre;
+                            document.getElementById('formApellido').value = data.apellido;
+                            document.getElementById('formDni').value = data.documentoIdentidad;
+                            document.getElementById('formTelefono').value = data.telefono || "";
+                            document.getElementById('formCorreo').value = data.correo || "";
+                            document.getElementById('formCargo').value = data.cargo;
+                            document.getElementById('formSueldo').value = data.sueldo;
+                            document.getElementById('formEstado').value = data.estado;
+                            
+                            // Mostramos el modal de Bootstrap
+                            var myModal = new bootstrap.Modal(document.getElementById('modalEmpleado'));
+                            myModal.show();
+                        }
+                    })
+                    .catch(error => console.error('Error cargando datos del empleado:', error));
+            }
+        </script>
+
+        <!-- ESTILOS CSS AUXILIARES EN LÍNEA -->
+        <style>
+            .avatar-circle {
+                width: 42px;
+                height: 42px;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 0.95rem;
+                letter-spacing: 0.5px;
+            }
+            .fs-7 { font-size: 0.85rem !important; }
+            .text-xs { font-size: 0.75rem !important; }
+            .th-truncated {
+                display: block;
+                max-width: 180px;
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        </style>
+
+    </div>
+
+</body>
+</html>

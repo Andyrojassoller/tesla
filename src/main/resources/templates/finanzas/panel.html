@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      th:replace="~{layout :: layout(~{::title}, ~{::content})}">
+<head>
+    <title>Gestión de Finanzas - Sistema de Pedidos</title>
+</head>
+<body>
+
+    <div th:fragment="content">
+        <!-- Tarjetas de Balance General -->
+        <div class="row mb-4">
+            <!-- Tarjeta Ingresos -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm bg-success text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-uppercase mb-1 opacity-75">Total Ingresos</h6>
+                                <h3 class="mb-0" th:text="'S/ ' + ${#numbers.formatDecimal(totalIngresos, 1, 2)}">S/ 0.00</h3>
+                            </div>
+                            <div class="fs-1"><i class="bi bi-arrow-up-circle-fill"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Tarjeta Egresos -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm bg-danger text-white">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-uppercase mb-1 opacity-75">Total Egresos</h6>
+                                <h3 class="mb-0" th:text="'S/ ' + ${#numbers.formatDecimal(totalEgresos, 1, 2)}">S/ 0.00</h3>
+                            </div>
+                            <div class="fs-1"><i class="bi bi-arrow-down-circle-fill"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tarjeta Balance Neto -->
+            <div class="col-md-4">
+                <div class="card border-0 shadow-sm text-white" 
+                     th:classappend="${balanceNeto >= 0} ? 'bg-primary' : 'bg-warning'">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                <h6 class="text-uppercase mb-1 opacity-75">Balance Neto</h6>
+                                <h3 class="mb-0" th:text="'S/ ' + ${#numbers.formatDecimal(balanceNeto, 1, 2)}">S/ 0.00</h3>
+                            </div>
+                            <div class="fs-1"><i class="bi bi-wallet2"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Tabla de Últimos Movimientos -->
+            <div class="col-md-8 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0"><i class="bi bi-list-columns-reverse"></i> Últimos Movimientos</h5>
+                    </div>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-hover align-middle mb-0">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Fecha</th>
+                                        <th>Descripción</th>
+                                        <th>Categoría</th>
+                                        <th>Tipo</th>
+                                        <th class="text-end">Monto</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr th:each="t : ${transacciones}">
+                                        <td th:text="${#temporals.format(t.fechaRegistro, 'dd/MM/yyyy HH:mm')}">01/01/2026</td>
+                                        <td th:text="${t.descripcion}">Venta de producto</td>
+                                        <td><span class="badge bg-secondary" th:text="${t.categoria}">VENTA</span></td>
+                                        <td>
+                                            <span th:if="${t.tipo == 'INGRESO'}" class="badge bg-success-subtle text-success">
+                                                <i class="bi bi-arrow-up"></i> Ingreso
+                                            </span>
+                                            <span th:if="${t.tipo == 'EGRESO'}" class="badge bg-danger-subtle text-danger">
+                                                <i class="bi bi-arrow-down"></i> Egreso
+                                            </span>
+                                        </td>
+                                        <td class="text-end fw-bold" 
+                                            th:classappend="${t.tipo == 'INGRESO'} ? 'text-success' : 'text-danger'"
+                                            th:text="${t.tipo == 'INGRESO' ? '+ S/ ' : '- S/ '} + ${#numbers.formatDecimal(t.monto, 1, 2)}">
+                                            S/ 0.00
+                                        </td>
+                                    </tr>
+                                    <tr th:if="${#lists.isEmpty(transacciones)}">
+                                        <td colspan="5" class="text-center py-4 text-muted">No hay transacciones registradas todavía.</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Formulario para Registrar Nuevo Movimiento -->
+            <div class="col-md-4 mb-4">
+                <div class="card border-0 shadow-sm">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0"><i class="bi bi-plus-circle"></i> Registrar Movimiento</h5>
+                    </div>
+                    <div class="card-body">
+                        <form th:action="@{/finanzas/registrar}" th:object="${nuevaTransaccion}" method="post">
+                            <div class="mb-3">
+                                <label for="tipo" class="form-label">Tipo de Movimiento</label>
+                                <select id="tipo" th:field="*{tipo}" class="form-select" required>
+                                    <option value="INGRESO">Ingreso (+)</option>
+                                    <option value="EGRESO">Egreso (-)</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="categoria" class="form-label">Categoría</label>
+                                <select id="categoria" th:field="*{categoria}" class="form-select" required>
+                                    <option value="VENTA">Venta / Pedido</option>
+                                    <option value="PROVEEDOR">Pago a Proveedores</option>
+                                    <option value="SERVICIOS">Servicios (Luz, Internet, etc.)</option>
+                                    <option value="PLANILLA">Planilla / Sueldos</option>
+                                    <option value="OTROS">Otros Gastos</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="monto" class="form-label">Monto (S/)</label>
+                                <input type="number" step="0.01" id="monto" th:field="*{monto}" class="form-control" placeholder="0.00" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="descripcion" class="form-label">Descripción</label>
+                                <textarea id="descripcion" th:field="*{descripcion}" class="form-control" rows="2" placeholder="Detalle del movimiento..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">
+                                <i class="bi bi-check-circle"></i> Guardar Transacción
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
