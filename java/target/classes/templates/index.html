@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::content})}">
+<head>
+    <title>Dashboard - Sistema de Gestión de Pedidos</title>
+</head>
+<body>
+    <div th:fragment="content">
+        <!-- Tarjetas de estadísticas -->
+        <div class="row mb-4">
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card stats-card primary">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                    Total Clientes
+                                </div>
+                                <div class="h3 mb-0 font-weight-bold text-gray-800" th:text="${totalClientes}">0</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-people fs-1 text-primary"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card stats-card success">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
+                                    Productos Activos
+                                </div>
+                                <div class="h3 mb-0 font-weight-bold text-gray-800" th:text="${totalProductos}">0</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-box-seam fs-1 text-success"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card stats-card warning">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
+                                    Pedidos Pendientes
+                                </div>
+                                <div class="h3 mb-0 font-weight-bold text-gray-800" th:text="${pedidosPendientes}">0</div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-hourglass-split fs-1 text-warning"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-3 col-md-6 mb-4">
+                <div class="card stats-card info">
+                    <div class="card-body">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <div class="text-xs font-weight-bold text-info text-uppercase mb-1">
+                                    Total Ventas
+                                </div>
+                                <div class="h3 mb-0 font-weight-bold text-gray-800">
+                                    S/ <span th:text="${#numbers.formatDecimal(totalVentas, 1, 'COMMA', 2, 'POINT')}">0.00</span>
+                                </div>
+                            </div>
+                            <div class="col-auto">
+                                <i class="bi bi-currency-dollar fs-1 text-info"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accesos rápidos -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card mb-4">
+                    <div class="card-header py-3">
+                        <h6 class="m-0 font-weight-bold text-primary">
+                            <i class="bi bi-lightning-charge"></i> Accesos Rápidos
+                        </h6>
+                    </div>
+                    <div class="card-body">
+                        <div class="row text-center">
+                            <div class="col-md-3 mb-3">
+                                <a th:href="@{/clientes/nuevo}" class="btn btn-primary btn-lg w-100">
+                                    <i class="bi bi-person-plus fs-1 d-block mb-2"></i>
+                                    <span>Nuevo Cliente</span>
+                                </a>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <a th:href="@{/productos/nuevo}" class="btn btn-success btn-lg w-100">
+                                    <i class="bi bi-plus-circle fs-1 d-block mb-2"></i>
+                                    <span>Nuevo Producto</span>
+                                </a>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <a th:href="@{/pedidos/nuevo}" class="btn btn-info btn-lg w-100">
+                                    <i class="bi bi-cart-plus fs-1 d-block mb-2"></i>
+                                    <span>Nuevo Pedido</span>
+                                </a>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <a th:href="@{/clientes}" class="btn btn-secondary btn-lg w-100">
+                                    <i class="bi bi-list-ul fs-1 d-block mb-2"></i>
+                                    <span>Ver Clientes</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Información del sistema -->
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-info-circle"></i> Información del Sistema
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span><i class="bi bi-database"></i> Base de Datos PostgreSQL</span>
+                                <span class="badge bg-success">Conectado</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span><i class="bi bi-cloud"></i> Base de Datos MongoDB</span>
+                                <span class="badge bg-success">Conectado</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between">
+                                <span><i class="bi bi-gear"></i> Versión</span>
+                                <span class="badge bg-info">1.0.0</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="card">
+                    <div class="card-header">
+                        <i class="bi bi-activity"></i> Estado del Sistema
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Uso de Clientes</span>
+                                <span th:text="${totalClientes} + ' registros'">0 registros</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-primary" role="progressbar" 
+                                     th:style="'width: ' + ${totalClientes > 0 ? (totalClientes * 10 > 100 ? 100 : totalClientes * 10) : 0} + '%'"></div>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Productos Activos</span>
+                                <span th:text="${totalProductos} + ' items'">0 items</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-success" role="progressbar" 
+                                     th:style="'width: ' + ${totalProductos > 0 ? (totalProductos * 4 > 100 ? 100 : totalProductos * 4) : 0} + '%'"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="d-flex justify-content-between mb-1">
+                                <span>Pedidos Pendientes</span>
+                                <span th:text="${pedidosPendientes} + ' pedidos'">0 pedidos</span>
+                            </div>
+                            <div class="progress">
+                                <div class="progress-bar bg-warning" role="progressbar" 
+                                     th:style="'width: ' + ${pedidosPendientes > 0 ? (pedidosPendientes * 10 > 100 ? 100 : pedidosPendientes * 10) : 0} + '%'"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

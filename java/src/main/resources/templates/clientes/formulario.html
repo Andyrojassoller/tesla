@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::content})}">
+<head>
+    <title th:text="${esNuevo ? 'Nuevo Cliente' : 'Editar Cliente'} + ' - Sistema de Gestión de Pedidos'">Cliente</title>
+</head>
+<body>
+    <div th:fragment="content">
+        <div class="card">
+            <div class="card-header">
+                <h5 class="mb-0">
+                    <i class="bi" th:classappend="${esNuevo ? 'bi-person-plus' : 'bi-pencil'}"></i>
+                    <span th:text="${esNuevo ? 'Nuevo Cliente' : 'Editar Cliente'}">Cliente</span>
+                </h5>
+            </div>
+            <div class="card-body">
+                <form th:action="@{/clientes/guardar}" th:object="${cliente}" method="post">
+                    <input type="hidden" th:field="*{idCliente}">
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="nombre" class="form-label">Nombre Completo *</label>
+                            <input type="text" th:field="*{nombre}" class="form-control" 
+                                   id="nombre" placeholder="Ej: Juan Pérez" required>
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('nombre')}" 
+                                 th:errors="*{nombre}">
+                                Error en nombre
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3">
+                            <label for="email" class="form-label">Email *</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                                <input type="email" th:field="*{email}" class="form-control" 
+                                       id="email" placeholder="ejemplo@correo.com" required>
+                            </div>
+                            <div class="invalid-feedback" th:if="${#fields.hasErrors('email')}" 
+                                 th:errors="*{email}">
+                                Error en email
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="telefono" class="form-label">Teléfono</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-telephone"></i></span>
+                                <input type="tel" th:field="*{telefono}" class="form-control" 
+                                       id="telefono" placeholder="555-1234567">
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 mb-3" th:if="${!esNuevo && cliente.fechaRegistro != null}">
+                            <label class="form-label">Fecha de Registro</label>
+                            <input type="text" class="form-control" readonly
+                                   th:value="${#temporals.format(cliente.fechaRegistro, 'dd/MM/yyyy')}">
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <button type="submit" class="btn btn-primary btn-lg">
+                            <i class="bi bi-check-circle"></i>
+                            <span th:text="${esNuevo ? 'Crear Cliente' : 'Actualizar Cliente'}">Guardar</span>
+                        </button>
+                        <a th:href="@{/clientes}" class="btn btn-secondary btn-lg">
+                            <i class="bi bi-x-circle"></i> Cancelar
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Información adicional para nuevos clientes -->
+        <div class="alert alert-info mt-3" th:if="${esNuevo}">
+            <i class="bi bi-info-circle"></i>
+            <strong>Nota:</strong> Al crear un cliente, se generará automáticamente su perfil en MongoDB para almacenar preferencias y comentarios.
+        </div>
+    </div>
+</body>
+</html>
