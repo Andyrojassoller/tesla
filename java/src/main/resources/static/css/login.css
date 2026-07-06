@@ -1,0 +1,236 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Segoe UI',sans-serif;
+    background:#fff;
+}
+
+.login-page{
+
+    display:flex;
+    height:100vh;
+}
+
+.left-panel{
+
+    width:50%;
+    background:#17233d;
+    color:white;
+
+    padding:50px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:space-between;
+}
+
+.logo{
+
+    display:flex;
+    align-items:center;
+    gap:15px;
+
+    font-size:30px;
+    font-weight:600;
+}
+
+.logo i{
+
+    width:42px;
+    height:42px;
+
+    background:#2979ff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:10px;
+
+    font-size:20px;
+}
+.left-content{
+
+    max-width:500px;
+}
+
+.left-content h1{
+
+    font-size:55px;
+    font-weight:700;
+
+    margin-bottom:25px;
+
+    line-height:1.1;
+}
+
+.left-content p{
+
+    color:#b8c4d5;
+
+    font-size:22px;
+
+    line-height:1.7;
+}
+.features{
+
+    display:flex;
+    gap:25px;
+}
+
+.feature-card{
+
+    width:180px;
+
+    border:1px solid rgba(255,255,255,.1);
+
+    border-radius:15px;
+
+    padding:25px;
+
+    background:rgba(255,255,255,.03);
+}
+
+.feature-card i{
+
+    font-size:35px;
+
+    color:white;
+
+    margin-bottom:20px;
+}
+
+.feature-card span{
+
+    display:block;
+
+    line-height:1.5;
+}
+.right-panel{
+
+    width:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:#ffffff;
+}
+.login-container{
+
+    width:460px;
+}
+.login-card{
+
+    border:none;
+
+    box-shadow:none;
+
+    border-radius:0;
+}
+.login-header{
+
+    background:white;
+
+    color:#111827;
+
+    text-align:left;
+
+    padding:0 0 30px 0;
+}
+
+.login-header i{
+
+    display:none;
+}
+
+.login-header h1{
+
+    font-size:48px;
+
+    font-weight:700;
+}
+
+.login-header p{
+
+    color:#6b7280;
+
+    margin-top:10px;
+}
+.login-body{
+
+    padding:0;
+}
+.form-control{
+
+    height:56px;
+
+    border-radius:12px;
+
+    border:1px solid #d8dce6;
+}
+
+.form-control:focus{
+
+    border-color:#2563eb;
+
+    box-shadow:none;
+}
+.btn-login{
+
+    background:#2563eb;
+
+    border:none;
+
+    border-radius:12px;
+
+    height:55px;
+
+    font-size:18px;
+
+    font-weight:600;
+
+    transition:.3s;
+}
+
+.btn-login:hover{
+
+    background:#1d4ed8;
+}
+.form-check{
+
+    margin:20px 0;
+}
+
+.form-check-input{
+
+    width:18px;
+    height:18px;
+}
+.divider{
+
+    margin:35px 0;
+}
+
+.divider::before{
+
+    background:#ddd;
+}
+.register-link{
+
+    text-align:center;
+}
+
+.register-link a{
+
+    color:#2563eb;
+
+    font-weight:600;
+}

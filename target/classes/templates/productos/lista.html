@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::content})}">
+<head>
+    <title>Catálogo de Productos - Sistema de Gestión de Pedidos</title>
+</head>
+<body>
+    <div th:fragment="content">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="bi bi-box-seam"></i> Catálogo de Productos</h5>
+                <a th:href="@{/productos/nuevo}" class="btn btn-success">
+                    <i class="bi bi-plus-circle"></i> Nuevo Producto
+                </a>
+            </div>
+            <div class="card-body">
+                <!-- Filtros -->
+                <div class="row mb-3">
+                    <div class="col-md-12">
+                        <div class="btn-group mb-2" role="group">
+                            <a th:href="@{/productos}" class="btn btn-outline-secondary"
+                               th:classappend="${categoriaActual == null ? 'active' : ''}">
+                                <i class="bi bi-grid-3x3"></i> Todas
+                            </a>
+                            <a th:each="cat : ${categorias}" 
+                               th:href="@{/productos/categoria/{categoria}(categoria=${cat})}" 
+                               class="btn btn-outline-secondary"
+                               th:classappend="${categoriaActual == cat ? 'active' : ''}"
+                               th:text="${cat}">
+                                Categoría
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla -->
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Categoría</th>
+                                <th>Precio</th>
+                                <th>Stock</th>
+                                <th>Estado</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:if="${productos.empty}">
+                                <td colspan="7" class="text-center text-muted">
+                                    <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                                    No hay productos disponibles
+                                </td>
+                            </tr>
+                            <tr th:each="producto : ${productos}">
+                                <td th:text="${producto.idProducto}">1</td>
+                                <td>
+                                    <strong th:text="${producto.nombre}">Producto</strong>
+                                    <br>
+                                    <small class="text-muted" th:text="${producto.descripcion}" 
+                                           th:if="${producto.descripcion != null}">Descripción</small>
+                                </td>
+                                <td>
+                                    <span class="badge bg-info" th:text="${producto.categoria ?: 'Sin categoría'}">Categoría</span>
+                                </td>
+                                <td>
+                                    <strong class="text-success">
+                                        S/ <span th:text="${#numbers.formatDecimal(producto.precio, 1, 'COMMA', 2, 'POINT')}">0.00</span>
+                                    </strong>
+                                </td>
+                                <td>
+                                    <span th:class="${producto.stock < 10 ? 'badge bg-danger' : (producto.stock < 20 ? 'badge bg-warning' : 'badge bg-success')}"
+                                          th:text="${producto.stock}">
+                                        0
+                                    </span>
+                                </td>
+                                <td>
+                                    <span th:class="${producto.activo ? 'badge bg-success' : 'badge bg-secondary'}"
+                                          th:text="${producto.activo ? 'Activo' : 'Inactivo'}">
+                                        Estado
+                                    </span>
+                                </td>
+                                <td>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <a th:href="@{/productos/ver/{id}(id=${producto.idProducto})}" 
+                                           class="btn btn-outline-success" title="Ver Detalle">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a th:href="@{/comentarios/producto/{id}(id=${producto.idProducto})}" 
+                                           class="btn btn-outline-info" title="Comentarios">
+                                            <i class="bi bi-chat-left-text"></i>
+                                        </a>
+                                        <a th:href="@{/productos/editar/{id}(id=${producto.idProducto})}" 
+                                           class="btn btn-outline-primary" title="Editar">
+                                            <i class="bi bi-pencil"></i>
+                                        </a>
+                                        <a th:href="@{/productos/eliminar/{id}(id=${producto.idProducto})}" 
+                                           class="btn btn-outline-danger" title="Eliminar"
+                                           onclick="return confirm('¿Está seguro de eliminar este producto?');">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Estadísticas -->
+                <div class="row mt-3">
+                    <div class="col-md-4">
+                        <div class="alert alert-info">
+                            <i class="bi bi-box-seam"></i>
+                            <strong>Total:</strong> <span th:text="${productos.size()}">0</span> productos
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="alert alert-warning">
+                            <i class="bi bi-exclamation-triangle"></i>
+                            <strong>Stock bajo:</strong> 
+                            <span th:text="${#lists.size(productos.?[stock < 10])}">0</span> productos
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="alert alert-success">
+                            <i class="bi bi-check-circle"></i>
+                            <strong>Activos:</strong> 
+                            <span th:text="${#lists.size(productos.?[activo])}">0</span> productos
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

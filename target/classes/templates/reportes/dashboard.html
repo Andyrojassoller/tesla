@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" 
+      th:replace="~{layout :: layout(~{::title}, ~{::content})}">
+<head>
+    <title>Reportes y Estadísticas - TeslaERP</title>
+</head>
+<body>
+
+    <div th:fragment="content">
+        <!-- INYECTAMOS LA LIBRERÍA AQUÍ ADENTRO PARA QUE TU LAYOUT NO LA IGNORE -->
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h4 class="mb-0"><i class="bi bi-bar-chart-line-fill text-primary"></i> Panel de Reportes Estadísticos</h4>
+        </div>
+
+        <!-- Fila de Gráficos -->
+        <div class="row">
+            <!-- Gráfico 1: Estado de Pedidos -->
+            <div class="col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0"><i class="bi bi-pie-chart-fill text-info"></i> Distribución de Pedidos</h5>
+                    </div>
+                    <div class="card-body d-flex justify-content-center align-items-center" style="position: relative; height:320px;">
+                        <canvas id="chartPedidos"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gráfico 2: Balance Financiero -->
+            <div class="col-md-6 mb-4">
+                <div class="card border-0 shadow-sm h-100">
+                    <div class="card-header bg-white py-3">
+                        <h5 class="mb-0"><i class="bi bi-cash-stack text-success"></i> Comparativa Financiera (S/)</h5>
+                    </div>
+                    <div class="card-body d-flex justify-content-center align-items-center" style="position: relative; height:320px;">
+                        <canvas id="chartFinanzas"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Script de inicialización protegido -->
+        <script th:inline="javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+                // 1. Datos para el gráfico de Pedidos (Doughnut)
+                const pPendientes = /*[[${pedidosPendientes}]]*/ 0;
+                const pProcesando = /*[[${pedidosProcesando}]]*/ 0;
+                const pCompletados = /*[[${pedidosCompletados}]]*/ 0;
+                const pCancelados = /*[[${pedidosCancelados}]]*/ 0;
+
+                const ctxPedidos = document.getElementById('chartPedidos').getContext('2d');
+                new Chart(ctxPedidos, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Pendientes', 'Procesando', 'Completados', 'Cancelados'],
+                        datasets: [{
+                            data: [pPendientes, pProcesando, pCompletados, pCancelados],
+                            backgroundColor: ['#ffc107', '#0dcaf0', '#198754', '#dc3545'],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { position: 'bottom' }
+                        }
+                    }
+                });
+
+                // 2. Datos para el gráfico de Finanzas (Bar)
+                const ingresos = /*[[${totalIngresos}]]*/ 0.0;
+                const egresos = /*[[${totalEgresos}]]*/ 0.0;
+                const balance = /*[[${balanceNeto}]]*/ 0.0;
+
+                const ctxFinanzas = document.getElementById('chartFinanzas').getContext('2d');
+                new Chart(ctxFinanzas, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Ingresos', 'Egresos', 'Balance Neto'],
+                        datasets: [{
+                            label: 'Monto en Soles (S /)',
+                            data: [ingresos, egresos, balance],
+                            backgroundColor: ['#198754', '#dc3545', '#0dcaf0'],
+                            borderRadius: 5
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: { beginAtZero: true }
+                        },
+                        plugins: {
+                            legend: { display: false }
+                        }
+                    }
+                });
+            });
+        </script>
+    </div>
+
+</body>
+</html>

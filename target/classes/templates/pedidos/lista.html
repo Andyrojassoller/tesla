@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      th:replace="~{layout :: layout(~{::title}, ~{::content})}">
+<head>
+    <title>Gestión de Pedidos - Sistema de Gestión de Pedidos</title>
+</head>
+<body>
+    <div th:fragment="content">
+        <div class="card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0"><i class="bi bi-cart-check"></i> Gestión de Pedidos</h5>
+                <a th:href="@{/pedidos/nuevo}" class="btn btn-info">
+                    <i class="bi bi-cart-plus"></i> Nuevo Pedido
+                </a>
+            </div>
+            <div class="card-body">
+                <!-- Filtros por estado -->
+                <div class="btn-group mb-3" role="group">
+                    <a th:href="@{/pedidos}" class="btn btn-outline-secondary"
+                       th:classappend="${estadoActual == null ? 'active' : ''}">
+                        <i class="bi bi-list"></i> Todos
+                    </a>
+                    <a th:href="@{/pedidos(estado='pendiente')}" class="btn btn-outline-warning"
+                       th:classappend="${estadoActual == 'pendiente' ? 'active' : ''}">
+                        <i class="bi bi-hourglass-split"></i> Pendientes
+                    </a>
+                    <a th:href="@{/pedidos(estado='procesando')}" class="btn btn-outline-info"
+                       th:classappend="${estadoActual == 'procesando' ? 'active' : ''}">
+                        <i class="bi bi-gear"></i> Procesando
+                    </a>
+                    <a th:href="@{/pedidos(estado='completado')}" class="btn btn-outline-success"
+                       th:classappend="${estadoActual == 'completado' ? 'active' : ''}">
+                        <i class="bi bi-check-circle"></i> Completados
+                    </a>
+                    <a th:href="@{/pedidos(estado='cancelado')}" class="btn btn-outline-danger"
+                       th:classappend="${estadoActual == 'cancelado' ? 'active' : ''}">
+                        <i class="bi bi-x-circle"></i> Cancelados
+                    </a>
+                </div>
+
+                <!-- Tabla -->
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>ID</th>
+                                <th>Cliente</th>
+                                <th>Fecha</th>
+                                <th>Estado</th>
+                                <th>Total</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:if="${pedidos.empty}">
+                                <td colspan="6" class="text-center text-muted">
+                                    <i class="bi bi-inbox fs-1 d-block mb-2"></i>
+                                    No hay pedidos registrados
+                                </td>
+                            </tr>
+                            <tr th:each="pedido : ${pedidos}">
+                                <td>
+                                    <strong>#<span th:text="${pedido.idPedido}">1</span></strong>
+                                </td>
+                                <td>
+                                    <i class="bi bi-person"></i>
+                                    <span th:text="${pedido.cliente.nombre}">Cliente</span>
+                                </td>
+                                <td th:text="${#temporals.format(pedido.fechaPedido, 'dd/MM/yyyy HH:mm')}">
+                                    01/01/2024 10:00
+                                </td>
+                                <td>
+                                    <span th:switch="${pedido.estado}">
+                                        <span th:case="'pendiente'" class="badge bg-warning">
+                                            <i class="bi bi-hourglass-split"></i> Pendiente
+                                        </span>
+                                        <span th:case="'procesando'" class="badge bg-info">
+                                            <i class="bi bi-gear"></i> Procesando
+                                        </span>
+                                        <span th:case="'completado'" class="badge bg-success">
+                                            <i class="bi bi-check-circle"></i> Completado
+                                        </span>
+                                        <span th:case="'cancelado'" class="badge bg-danger">
+                                            <i class="bi bi-x-circle"></i> Cancelado
+                                        </span>
+                                        <span th:case="*" class="badge bg-secondary" th:text="${pedido.estado}">
+                                            Estado
+                                        </span>
+                                    </span>
+                                </td>
+                                <td>
+                                    <strong class="text-success">
+                                        S/ <span th:text="${#numbers.formatDecimal(pedido.total, 1, 'COMMA', 2, 'POINT')}">0.00</span>
+                                    </strong>
+                                </td>
+                                <td>
+                                    <div class="btn-group btn-group-sm" role="group">
+                                        <a th:href="@{/pedidos/{id}(id=${pedido.idPedido})}" 
+                                           class="btn btn-outline-info" title="Ver Detalles">
+                                            <i class="bi bi-eye"></i>
+                                        </a>
+                                        <a th:href="@{/pedidos/eliminar/{id}(id=${pedido.idPedido})}" 
+                                           class="btn btn-outline-danger" title="Eliminar"
+                                           onclick="return confirm('¿Está seguro de eliminar este pedido?');">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Resumen -->
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="alert alert-info">
+                            <i class="bi bi-cart-check"></i>
+                            <strong>Total de pedidos:</strong> <span th:text="${pedidos.size()}">0</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="alert alert-success">
+                            <i class="bi bi-currency-dollar"></i>
+                            <strong>Valor total:</strong> 
+                            S/ <span th:text="${#numbers.formatDecimal(#aggregates.sum(pedidos.![total]), 1, 'COMMA', 2, 'POINT')}">0.00</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
